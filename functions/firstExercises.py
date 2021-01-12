@@ -1,105 +1,148 @@
+# This program has several functions, that are really simple programs.
 
-flag_menu=False
+#########################
+# FUNCTIONS DECLARATION #
+#########################
 
 # Function to calculate the final price when a discount is applied.
-def DiscountedPrice(price, discount):
+def discounted_price(original, percent):
+    return original - (original * percent / 100)
 
-    return price - (price * discount / 100)
 
 # Function to read numbers. Only does that, ask the user for a number and read it.
-def Read0To10():
+def read0to10():
     num = float(input("Enter a number between 0 and 10: "))
-    print("The choosen number is...", num, "!")
+    print("The chosen number is...", num, "!")
     return num
 
+
 # Function to check if a given letter is a vowel or no.
-def vowelCheck(letter):
+def vowel_check(character):
     vowels = ['a', 'e', 'i', 'o', 'u']
     vowel = False
-    MaybeVowel = letter.lower()
+    maybe_vowel = character.lower()
     for i in vowels:
-        if i == MaybeVowel:
+        if i == maybe_vowel:
             vowel = True
     return vowel
 
+
 # Function to multiply numbers in a list
-def multiplier(nums):
+def multiplier(num_list):
     result = 1
-    for i in nums:
+    for i in num_list:
         result = result * i
     return result
 
-#Function that creates multiple histograms given a list
-def histogram(list):
-    for number in list:
-        print(number*'*')
 
-def minLength(words, limit):
-    print('The choosen words are: \n')
-    for word in words:
-        if len(word) >= limit:
+# Function that creates multiple histograms given a list
+def histogram(numbers_to_multiply):
+    for i in numbers_to_multiply:
+        print(i * '*')
+
+
+def words_filter(words_list, minimum_length):
+    print('The chosen words are: \n')
+    for word in words_list:
+        if len(word) > minimum_length:
             print('- ', word)
 
-def UppercaseCounter(phrase):
+
+def uppercase_counter(string):
     counter = 0
-    for letter in phrase:
-        if letter.isupper() == True:
+    for character in string:
+        if character.isupper():
             counter += 1
     print('There are', counter, 'uppercase letters.')
 
+
+####################
+#   MAIN PROGRAM   #
+####################
+
+flag_menu = False
+
 while not flag_menu:
-    print("1.-EXERCISE 1\n2.-EXERCISE 2\n3.-EXERCISE 3\n4.-EXERCISE 4\n5.-EXERCISE 5\n6.-EXERCISE 6\n7.-EXERCISE 7\n8.-EXIT\nCHOOSE AN OPTION:")
-    option=int(input())
-    if option==1:
-       # Definiu i programeu una funció que, donats un preu i un percentatge de descompte, ens torni el preu amb
-       # el descompte aplicat. La funció té dos paràmetres: preu i percentatge. Retorna el preu amb el descompte
-       # aplicat.
-        print("EXERCISE 1")
+    print(
+        "1.-EXERCISE 1. FINAL PRICE WITH DISCOUNT\n2.-EXERCISE 2. NUMBER 0-10\n3.-EXERCISE 3. VOWEL OR NOT\n"
+        "4.-EXERCISE 4. LIST NUMBERS MULTIPLICATION\n5.-EXERCISE 5. HISTOGRAM\n"
+        "6.-EXERCISE 6. WORDS IN ARRAY LONGER OR EQUAL THAN X\n7.-EXERCISE 7. UPPERCASE COUNTER\n"
+        "8.-EXIT\nCHOOSE AN OPTION:")
+    option = int(input())
+    if option == 1:
+        # Define and program a function that, given a price and a discount, returns the final price with discount.
+        # The function has two parameters: Price, and percent. Returns final price.
+
+        print("EXERCISE 1.")
+
         discount = 30
         price = float(input("Enter the price: "))
-        print("Final price is: ", DiscountedPrice(price, discount))
+        print("Final price is: ", discounted_price(price, discount))
 
-    elif option==2:
-        # Creeu una funció "llegeix1a10" que s'encarregui de demanar a l'usuari que introdueixi pel teclat un nombre
-        # entre 0 i 10. Fins que el nombre no està entre el 0 i el 10, continua demanant a l'usuari el número.
-        # La funció no tè paràmetres, i retorna un nombre sencer, que és el que s'ha llegit a la funció.
+    elif option == 2:
+        # Create a function "read0to10" that asks the user for a number between 0 and 10. If the given number is lower
+        # or higher, the program keeps asking for a new one.
+        # The function has no parameters, and returns the number given by the user.
+
         print("EXERCISE 2")
 
-        exit = False
-        while not exit:
-            number = Read0To10()
-            if number >= 0 and number <=10:
-                exit = True
+        between = False
+        while not between:
+            number = read0to10()
+            if 0 <= number <= 10:
+                between = True
                 print("That's between 0 and 10!")
             else:
                 print("That's not between 0 and 10.")
+
     elif option == 3:
-        # Escriure una funció que donat un caràcter retorni True si és una vocal, en cas contrari, torna False.
+        # Write a function that given a character, returns if it's a vowel or no. The return format is True/False
+
         print('EXERCISE 3')
+
         letter = input('Please, enter a letter: ')
-        print(vowelCheck(letter))
+        print(vowel_check(letter))
+
     elif option == 4:
-        # Escriure una funció multipliquin els elements d’una llista. Per exemple: multip([1,2,3,4]) hauria de tornar 24.
+        # Write a function that multiplies all elements in a list. Example: [1,2,3,4] should return 24
+
+        print("EXERCISE 4")
+
         num1 = int(input('Please, enter a number: '))
         num2 = int(input('Please, enter a second number: '))
         num3 = int(input('Please, enter a third number: '))
         num4 = int(input('Please, enter a fourth number: '))
         nums = [num1, num2, num3, num4]
         print('The result of multiplying all the numbers is: ', multiplier(nums))
-    elif option == 5:
-        # Escriure un programa que contingui una funció anomenada histograma, aquesta funció agafarà els elements d’una llista de números sencers i imprimirà un histograma en la pantalla
-        list = [1,3,5,7,5,3,1]
-        histogram(list)
-    elif option == 6:
-        # Escriure un programa que contingui una funció anomenada filtra_paraules, que agafi una llista de paraules i un nombre sencer n, i retorni les paraules que tinguin més de n caràcters.
-        words = ['lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit','nunc','mi','lectus','suscipit','non','bibendum','et','fringilla','ut','arcu','sed']
-        limit = int(input('Enter the minimum length: '))
-        minLength(words, limit)
-    elif option == 7:
-        # Escriure una funció que demani a l’usuari que introdueixi una cadena de text i indiqui quantes lletres majúscules té.
-        phrase = input('Enter a phrase: ')
-        UppercaseCounter(phrase)
-    else:
-        flag_menu=True
-        print("PROGRAM ENDED")
 
+    elif option == 5:
+        # Write a program that has a function named "histogram".
+        # This function will get elements from a list of integer numbers and print an histogram in screen using *.
+
+        print("EXERCISE 4")
+
+        nums_to_multiply = [1, 3, 5, 7, 5, 3, 1]
+        histogram(nums_to_multiply)
+
+    elif option == 6:
+        # Write a program that has a function named words_filter, that gets an array with words, an integer number and
+        # returns those words longer than n characters.
+
+        print("EXERCISE 5")
+
+        words = ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'nunc', 'mi', 'lectus',
+                 'suscipit', 'non', 'bibendum', 'et', 'fringilla', 'ut', 'arcu', 'sed']
+        limit = int(input('Enter the minimum length: '))
+        words_filter(words, limit)
+
+    elif option == 7:
+        # Write a function that asks the user for a string, and tells how many uppercase characters are there.
+
+        print("EXERCISE 6")
+
+        phrase = input('Enter a phrase: ')
+        uppercase_counter(phrase)
+
+    else:
+        flag_menu = True
+        print("PROGRAM ENDED")
