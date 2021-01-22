@@ -78,7 +78,7 @@ def divider(num1, num2):
     try:
         num1 = int(num1)
         num2 = int(num2)
-        print('The division of', num1, ' and', num2, ' is:', num1/num2)
+        print('The division of', num1, ' and', num2, ' is:', num1 / num2)
     except:
         print('The division is not possible.')
 
@@ -89,7 +89,7 @@ def minus_hundred(num):
             print("The number must be equal or bigger than 100!")
             return
         num = int(num)
-        print("The result is: ", num-100)
+        print("The result is: ", num - 100)
     except:
         print("That's not a number dude, don't bluff me")
     return
@@ -123,10 +123,6 @@ def menu():
             print("That option is not valid.")
 
 
-
-users_db = {'admin': 'NotSoAdm1n', 'user': 'Ml3m', 'NotInLove':'JustAL1ttleDrunkOnYou'}
+users_db = {'admin': 'NotSoAdm1n', 'user': 'Ml3m', 'NotInLove': 'JustAL1ttleDrunkOnYou'}
 login(users_db)
 menu()
-
-
-
