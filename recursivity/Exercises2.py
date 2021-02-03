@@ -24,10 +24,10 @@ recursiu que comprovi si el valor d’algun dels elements de la llista coincidei
 def index_value_check(list):
     if len(list) == 0:
         return False
-    elif len(list) == list[-1]:
+    elif len(list) == list[0]:
         return True
     else:
-        return index_value_check(list[:-1])
+        return index_value_check(list[1:])
 
 
-print(index_value_check([1, 5, 9, 6]))
+print(index_value_check([0, 5, 9, 5]))
