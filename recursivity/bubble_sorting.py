@@ -47,3 +47,23 @@ def recursive_bubble_v3(list, iterations, comparisons):
 
 ul3 = [[99, 2, -1], [2, 15, -2], [1, 5, -7]]
 print(recursive_bubble_v3(ul3, 0, 0))
+
+# Recursive bubble sort for diagonals (Now seriously, who designed those exercises?)
+
+
+def recursive_bubble_v4(list, iterations, comparisons):
+    if iterations > len(list)-2:
+        return list
+    if comparisons > len(list[iterations]) - 1:
+        return recursive_bubble_v4(list, iterations + 1, 0)
+    if comparisons < len(list[iterations])-1 and iterations < len(list)-1:
+        if list[iterations][comparisons] > list[iterations+1][comparisons+1]:
+            list[iterations][comparisons], list[iterations+1][comparisons+1] = list[iterations + 1][comparisons + 1], list[iterations][comparisons]
+    if comparisons > 0 and iterations > 0:
+        if list[iterations - 1][comparisons - 1] > list[iterations][comparisons]:
+            list[iterations - 1][comparisons - 1], list[iterations][comparisons] = list[iterations][comparisons], list[iterations - 1][comparisons - 1]
+    return recursive_bubble_v4(list, iterations, comparisons + 1)
+
+
+ul4 = [[99, 2, -1], [2, 15, -2], [1, 5, -7]]
+print(recursive_bubble_v4(ul4, 0, 0))
