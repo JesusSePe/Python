@@ -1,0 +1,23 @@
+tuples_cotxes = [("Vermell","4859-A","A"),("Blau", "2901-Z", "M"),
+                 ("Gris", "1892-B","M")]
+lista=sorted(tuples_cotxes,key=lambda elemento: elemento[1],reverse=True )
+print(lista)
+
+diccionari_cotxes = [
+ {'color': 'Vermell', 'matricula': '4859-A', 'canvi': 'A'},
+ {'color': 'Blau', 'matricula': '2901-Z', 'canvi': 'M'},
+ {'color': 'Gris', 'matricula': '1892-B', 'canvi': 'M'}
+]
+lista=sorted(diccionari_cotxes,key=lambda elemento:elemento['color'] )
+print(lista)
+
+graus={
+    "Londres" : (295, 22),
+    "Madrid": (309, 36),
+    "Barcelona": (293, 20),
+    "Sevilla": (299, 26),
+    "Cádiz": (303, 30),
+    "Lima": (311, 38)}
+ordenados = sorted(graus.items(), key=lambda Celcius: Celcius[1],reverse=True)
+
+
